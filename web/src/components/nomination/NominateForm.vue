@@ -144,7 +144,7 @@ import VariableAlert from '@/components/alerts/VariableAlert.vue';
 
 import { validationMixin } from 'vuelidate';
 import {
-  required, email, minLength, url,
+  required, email, minLength, maxLength, url,
 } from 'vuelidate/lib/validators';
 import japanese from '@/validators/japanese';
 
@@ -152,6 +152,7 @@ const isTrue = (value) => value;
 const touchMap = new WeakMap();
 const VALIDATION_DELAY = 1000;
 const BIO_LENGTH = 30;
+const JOB_TITLE_LENGTH = 10;
 
 export default {
   components: {
@@ -200,6 +201,11 @@ export default {
         linkedin: { url },
         website: { url },
         priorPresentation: { url },
+      },
+      job: {
+        title: {
+          maxLength: maxLength(JOB_TITLE_LENGTH),
+        },
       },
     },
   },
